@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://yoursite.com/asset/img/ssh7.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme2.png">
-<meta property="og:updated_time" content="2018-10-26T16:32:28.411Z">
+<meta property="og:updated_time" content="2018-10-26T16:41:37.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Git上传项目代码到github(转)">
 <meta name="twitter:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
@@ -204,8 +204,14 @@
 <p>一路next，安装成功后， 回到C盘，或任何文件夹下，点鼠标右键会多出一些菜单<br>如 Git Init Hear、Git Bash、Git Gui ， 说明安装成功。</p>
 <h2 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h2><p>我们先在电脑硬盘里找一块地方存放本地仓库，比如我们把本地仓库建立在C:\MyRepository\1ke_test文件夹下</p>
 <p>进入1ke_test文件夹 鼠标右键操作如下步骤：</p>
-<p>1）在本地仓库里右键选择Git Init Here，会多出来一个.git文件夹，这就表示本地git创建成功。右键Git Bash进入git命令行，截图效果如下：<br><img src="/asset/img/bash1.png" class="[git]"><br>第一次在本地仓库操作需要先执行git init命令<br><code>$ git init</code><br><img src="/asset/img/bash2.png" class="[git]"><br>为了把本地的仓库传到github，还需要配置ssh key。</p>
-<p>2）在本地创建ssh key<br><code>$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</code></p>
+<p>1）在本地仓库里右键选择Git Init Here，会多出来一个.git文件夹，这就表示本地git创建成功。右键Git Bash进入git命令行，截图效果如下：<br><img src="/asset/img/bash1.png" class="[git]"><br>第一次在本地仓库操作需要先执行git init命令</p>
+<blockquote>
+<p>$ git init<br><img src="/asset/img/bash2.png" class="[git]"><br>为了把本地的仓库传到github，还需要配置ssh key。</p>
+</blockquote>
+<p>2）在本地创建ssh key</p>
+<blockquote>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>“</p>
+</blockquote>
 <p>后面的<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>改为你的邮箱。我的邮箱是<a href="mailto:lilu@1ke.co" target="_blank" rel="noopener">lilu@1ke.co</a>，也是在github上注册的那个邮箱：<br><img src="/asset/img/bash3.png" class="[git]"><br>直接点回车，说明会在默认文件id_rsa上生成ssh key。</p>
 <p>然后系统要求输入密码，直接按回车表示不设密码<br><img src="/asset/img/bash4.png" class="[git]"></p>
 <p>重复密码时也是直接回车，之后提示你shh key已经生成成功。<br><img src="/asset/img/bash5.png" class="[git]"></p>
@@ -213,94 +219,141 @@
 <p>打开id_rsa.pub，复制里面的key。里面的key是一对看不懂的字符数字组合，不用管它，直接复制。</p>
 <p>回到github网站，进入Account Settings，左边选择SSH Keys，Add SSH Key,<br><img src="/asset/img/ssh2.png" class="[git]"></p>
 <p>title随便填，粘贴key。<br><img src="/asset/img/ssh3.png" class="[git]"></p>
-<p>3）验证是否成功，在git bash下输入<br><code>$ ssh -T git@github.com</code></p>
+<p>3）验证是否成功，在git bash下输入</p>
+<blockquote>
+<p>$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+</blockquote>
 <p>回车就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。<br><img src="/asset/img/ssh4.png" class="[git]"></p>
-<p>4）接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们<br><code>$ git config --global user.name &quot;your name&quot;</code><br><code>$ git config --global user.email &quot;your_email@youremail.com&quot;</code></p>
+<p>4）接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们</p>
+<blockquote>
+<p>$ git config –global user.name “your name”<br>$ git config –global user.email “<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>“</p>
+</blockquote>
 <p>分别输入上述命令行 回车， 我的界面显示如下<br><img src="/asset/img/ssh5.png" class="[git]"></p>
-<p>5）进入要上传的仓库，右键git bash，添加远程地址<br><code>$ git remote add origin git@github.com:yourName/yourRepo.git</code></p>
+<p>5）进入要上传的仓库，右键git bash，添加远程地址</p>
+<blockquote>
+<p>$ git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourName/yourRepo.git</p>
+</blockquote>
 <p>后面的yourName和yourRepo表示你再github的用户名和刚才新建的仓库，加完之后进入.git，打开config，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。<br><img src="/asset/img/ssh6.png" class="[git]"></p>
 <p>与github上的对应<br><img src="/asset/img/ssh7.png" class="[git]"></p>
 <h2 id="提交上传"><a href="#提交上传" class="headerlink" title="提交上传"></a>提交上传</h2><p>1）接下来在本地仓库里添加一些文件，比如README</p>
 <p>在本地新建一个README文件<br><img src="/asset/img/readme.png" class="[git]"></p>
-<p>然后在命令行输入一下命令<br><code>$ git add README</code><br><code>$ git commit -m &quot;first commit&quot;</code></p>
+<p>然后在命令行输入一下命令</p>
+<blockquote>
+<p>$ git add README<br>$ git commit -m “first commit”</p>
+</blockquote>
 <p>我的执行界面如下<br><img src="/asset/img/readme2.png" class="[git]"></p>
-<p>2）上传到github<br><code>$ git push origin master</code></p>
+<p>2）上传到github </p>
+<blockquote>
+<p>$ git push origin master</p>
+</blockquote>
 <p>git push命令会将本地仓库推送到远程服务器。</p>
 <p>git pull命令则相反。</p>
 <p>注：首次提交，先git pull下，修改完代码后，使用git status可以查看文件的差别，使用git add 添加要commit的文件。</p>
 <p>大功告成，现在你知道如何将本地的项目提交到github上了。</p>
 <h2 id="gitignore文件"><a href="#gitignore文件" class="headerlink" title="gitignore文件"></a>gitignore文件</h2><p>.gitignore顾名思义就是告诉git需要忽略的文件，这是一个很重要并且很实用的文件。一般我们写完代码后会执行编译、调试等操作，这期间会产生很多中间文件和可执行文件，这些都不是代码文件，是不需要git来管理的。我们在git status的时候会看到很多这样的文件，如果用git add -A来添加的话会把他们都加进去，而手动一个个添加的话也太麻烦了。这时我们就需要.gitignore了。</p>
-<h2 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h2><p>查看、添加、提交、删除、找回，重置修改文件<br><code>git help &lt;command&gt; # 显示command的help</code></p>
-<p><code>git show # 显示某次提交的内容 git show $id</code></p>
-<p><code>git co -- &lt;file&gt; # 抛弃工作区修改</code></p>
-<p><code>git co . # 抛弃工作区修改</code></p>
-<p><code>git add &lt;file&gt; # 将工作文件修改提交到本地暂存区</code></p>
-<p><code>git add . # 将所有修改过的工作文件提交暂存区</code></p>
-<p><code>git rm &lt;file&gt; # 从版本库中删除文件</code></p>
-<p><code>git rm &lt;file&gt; --cached # 从版本库中删除文件，但不删除文件</code></p>
-<p><code>git reset &lt;file&gt; # 从暂存区恢复到工作文件</code></p>
-<p><code>git reset -- . # 从暂存区恢复到工作文件</code></p>
-<p><code>git reset --hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</code></p>
-<p><code>git ci &lt;file&gt; git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做 git ci -am &quot;some comments&quot;</code></p>
-<p><code>git ci --amend # 修改最后一次提交记录</code></p>
-<p><code>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</code></p>
-<p><code>git revert HEAD # 恢复最后一次提交的状态</code></p>
-<p>查看文件diff<br><code>git diff &lt;file&gt; # 比较当前文件和暂存区文件差异 git diff</code></p>
-<p><code>git diff &lt;id1&gt;&lt;id2&gt; # 比较两次提交之间的差异</code></p>
-<p><code>git diff &lt;branch1&gt;..&lt;branch2&gt; # 在两个分支之间比较</code></p>
-<p><code>git diff --staged # 比较暂存区和版本库差异</code></p>
-<p><code>git diff --cached # 比较暂存区和版本库差异</code></p>
-<p><code>git diff --stat # 仅仅比较统计信息</code></p>
-<p>查看提交记录<br><code>git log git log &lt;file&gt; # 查看该文件每次提交记录</code></p>
-<p><code>git log -p &lt;file&gt; # 查看每次详细修改内容的diff</code></p>
-<p><code>git log -p -2 # 查看最近两次详细修改内容的diff</code></p>
-<p><code>git log --stat #查看提交统计信息</code></p>
-<p>tig:<br>Mac上可以使用tig代替diff和log，brew install tig</p>
-<p>Git 本地分支管理<br>查看、切换、创建和删除分支<br><code>git br -r # 查看远程分支</code></p>
-<p><code>git br &lt;new_branch&gt; # 创建新的分支</code></p>
-<p><code>git br -v # 查看各个分支最后提交信息</code></p>
-<p><code>git br --merged # 查看已经被合并到当前分支的分支</code></p>
-<p><code>git br --no-merged # 查看尚未被合并到当前分支的分支</code></p>
-<p><code>git co &lt;branch&gt; # 切换到某个分支</code></p>
-<p><code>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</code></p>
-<p><code>git co -b &lt;new_branch&gt; &lt;branch&gt; # 基于branch创建新的new_branch</code></p>
-<p><code>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</code></p>
-<p><code>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</code></p>
-<p><code>git br -d &lt;branch&gt; # 删除某个分支</code></p>
-<p><code>git br -D &lt;branch&gt; # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</code></p>
-<p> 分支合并和rebase<br> <code>git merge &lt;branch&gt; # 将branch分支合并到当前分支</code></p>
-<p><code>git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交</code></p>
-<p><code>git rebase master &lt;branch&gt; # 将master rebase到branch，相当于： git co &lt;branch&gt; &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge &lt;branch&gt;</code></p>
-<p>Git补丁管理(方便在多台机器上开发同步时用)<br><code>git diff &gt; ../sync.patch # 生成补丁</code></p>
-<p><code>git apply ../sync.patch # 打补丁</code></p>
-<p><code>git apply --check ../sync.patch #测试补丁能否成功</code></p>
-<p> Git暂存管理<br><code>git stash # 暂存</code></p>
-<p><code>git stash list # 列所有stash</code></p>
-<p><code>git stash apply # 恢复暂存的内容</code></p>
-<p><code>git stash drop # 删除暂存区</code></p>
-<p><code>Git远程分支管理</code></p>
-<p><code>git pull # 抓取远程仓库所有分支更新并合并到本地</code></p>
-<p><code>git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</code></p>
-<p><code>git fetch origin # 抓取远程仓库更新</code></p>
-<p><code>git merge origin/master # 将远程主分支合并到本地当前分支</code></p>
-<p><code>git co --track origin/branch # 跟踪某个远程分支创建相应的本地分支</code></p>
-<p><code>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</code></p>
-<p>git push # push所有分支<br><code>git push origin master # 将本地主分支推到远程主分支</code></p>
-<p><code>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</code></p>
-<p><code>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</code></p>
-<p><code>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</code></p>
-<p><code>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d &lt;branch&gt;)，然后再push删除远程分支</code></p>
-<p>Git远程仓库管理<br><code>git remote -v # 查看远程服务器地址和仓库名称</code></p>
-<p><code>git remote show origin # 查看远程服务器仓库状态</code></p>
-<p><code>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</code></p>
-<p><code>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm &lt;repository&gt; # 删除远程仓库</code></p>
-<p>创建远程仓库<br><code>git clone --bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</code></p>
-<p><code>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</code></p>
-<p><code>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git --bare init # 在服务器创建纯仓库</code></p>
-<p><code>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</code></p>
-<p><code>git push -u origin master # 客户端首次提交</code></p>
-<p><code>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</code></p>
-<p><code>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</code></p>
+<h2 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h2><p>查看、添加、提交、删除、找回，重置修改文件</p>
+<blockquote>
+<p>git help <command> # 显示command的help</p>
+<p>git show # 显示某次提交的内容 git show $id</p>
+<p>git co – <file> # 抛弃工作区修改</file></p>
+<p>git co . # 抛弃工作区修改</p>
+<p>git add <file> # 将工作文件修改提交到本地暂存区</file></p>
+<p>git add . # 将所有修改过的工作文件提交暂存区</p>
+<p>git rm <file> # 从版本库中删除文件</file></p>
+<p>git rm <file> –cached # 从版本库中删除文件，但不删除文件</file></p>
+<p>git reset <file> # 从暂存区恢复到工作文件</file></p>
+<p>git reset – . # 从暂存区恢复到工作文件</p>
+<p>git reset –hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</p>
+<p>git ci <file> git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做 git ci -am “some &gt;comments”</file></p>
+<p>git ci –amend # 修改最后一次提交记录</p>
+<p>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</p>
+<p>git revert HEAD # 恢复最后一次提交的状态</p>
+</blockquote>
+<p>查看文件diff</p>
+<blockquote>
+<p>git diff <file> # 比较当前文件和暂存区文件差异 git diff</file></p>
+<p>git diff <id1><id2> # 比较两次提交之间的差异</id2></id1></p>
+<p>git diff <branch1>..<branch2> # 在两个分支之间比较</branch2></branch1></p>
+<p>git diff –staged # 比较暂存区和版本库差异</p>
+<p>git diff –cached # 比较暂存区和版本库差异</p>
+<p>git diff –stat # 仅仅比较统计信息</p>
+</blockquote>
+<p>查看提交记录</p>
+<blockquote>
+<p>git log git log <file> # 查看该文件每次提交记录</file></p>
+<p>git log -p <file> # 查看每次详细修改内容的diff</file></p>
+<p>git log -p -2 # 查看最近两次详细修改内容的diff</p>
+<p>git log –stat #查看提交统计信息</p>
+</blockquote>
+<p>tig<br>Mac上可以使用tig代替diff和log，brew install tig</p>
+<p>Git 本地分支管理<br>查看、切换、创建和删除分支</p>
+<blockquote>
+<p>git br -r # 查看远程分支</p>
+<p>git br &lt;new_branch&gt; # 创建新的分支</p>
+<p>git br -v # 查看各个分支最后提交信息</p>
+<p>git br –merged # 查看已经被合并到当前分支的分支</p>
+<p>git br –no-merged # 查看尚未被合并到当前分支的分支</p>
+<p>git co <branch> # 切换到某个分支</branch></p>
+<p>git co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</p>
+<p>git co -b &lt;new_branch&gt; <branch> # 基于branch创建新的new_branch</branch></p>
+<p>git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</p>
+<p>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</p>
+<p>git br -d <branch> # 删除某个分支</branch></p>
+<p>git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</branch></p>
+</blockquote>
+<p> 分支合并和rebase</p>
+<blockquote>
+<p>git merge <branch> # 将branch分支合并到当前分支</branch></p>
+<p>git merge origin/master –no-ff # 不要Fast-Foward合并，这样可以生成merge提交</p>
+<p>git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> &amp;&amp; git rebase master &amp;&gt;&amp; git co master &amp;&amp; git merge <branch></branch></branch></branch></p>
+</blockquote>
+<p>Git补丁管理(方便在多台机器上开发同步时用)</p>
+<blockquote>
+<p>git diff &gt; ../sync.patch # 生成补丁</p>
+<p>git apply ../sync.patch # 打补丁</p>
+<p>git apply –check ../sync.patch #测试补丁能否成功</p>
+</blockquote>
+<p> Git暂存管理</p>
+<blockquote>
+<p>git stash # 暂存</p>
+<p>git stash list # 列所有stash</p>
+<p>git stash apply # 恢复暂存的内容</p>
+<p>git stash drop # 删除暂存区</p>
+</blockquote>
+<p>Git远程分支管理</p>
+<blockquote>
+<p>git pull # 抓取远程仓库所有分支更新并合并到本地</p>
+<p>git pull –no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</p>
+<p>git fetch origin # 抓取远程仓库更新</p>
+<p>git merge origin/master # 将远程主分支合并到本地当前分支</p>
+<p>git co –track origin/branch # 跟踪某个远程分支创建相应的本地分支</p>
+<p>git co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</p>
+</blockquote>
+<p>git push # push所有分支</p>
+<blockquote>
+<p>git push origin master # 将本地主分支推到远程主分支</p>
+<p>git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</p>
+<p>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</p>
+<p>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</p>
+<p>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d <branch>)，然后再push删除远程分支</branch></p>
+</blockquote>
+<p>Git远程仓库管理</p>
+<blockquote>
+<p>git remote -v # 查看远程服务器地址和仓库名称</p>
+<p>git remote show origin # 查看远程服务器仓库状态</p>
+<p>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</p>
+<p>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(&gt;用于修改远程仓库地址) git remote rm <repository> # 删除远程仓库</repository></p>
+</blockquote>
+<p>创建远程仓库</p>
+<blockquote>
+<p>git clone –bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</p>
+<p>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</p>
+<p>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git –bare init # 在服务器创建纯仓库</p>
+<p>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</p>
+<p>git push -u origin master # 客户端首次提交</p>
+<p>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</p>
+<p>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</p>
+</blockquote>
 <p>也可以命令设置跟踪远程库和本地库</p>
 <blockquote>
 <p>git branch –set-upstream master origin/master</p>
