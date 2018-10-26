@@ -8,20 +8,33 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>如何使用Git上传项目代码到github(转) | CNelfHope的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。   注册账户以及创建仓库要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一">
+  <meta name="description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用Git上传项目代码到github(转)">
 <meta property="og:url" content="http://yoursite.com/2018/10/26/如何使用Git上传项目代码到github-转/index.html">
 <meta property="og:site_name" content="CNelfHope的个人小站">
-<meta property="og:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。   注册账户以及创建仓库要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一">
+<meta property="og:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/asset/img/git.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/git-index.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/repository.png">
-<meta property="og:updated_time" content="2018-10-26T10:28:12.067Z">
+<meta property="og:image" content="http://yoursite.com/asset/img/git-new-rep.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/bash1.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/bash2.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/bash3.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/bash4.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/bash5.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh2.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh3.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh4.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh5.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh6.png">
+<meta property="og:image" content="http://yoursite.com/asset/img/ssh7.png">
+<meta property="og:updated_time" content="2018-10-26T15:41:47.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Git上传项目代码到github(转)">
-<meta name="twitter:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。   注册账户以及创建仓库要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一">
+<meta name="twitter:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
 <meta name="twitter:image" content="http://yoursite.com/asset/img/git.png">
   
     <link rel="alternative" href="/atom.xml" title="CNelfHope的个人小站" type="application/atom+xml">
@@ -181,7 +194,28 @@
         <p>github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。</p>
 <img src="/asset/img/git.png" class="[git]">
 <hr>
-<p>注册账户以及创建仓库<br>要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。步骤如下：打开<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 直接在首页上注册<br><img src="/asset/img/git-index.png" class="[git]"><br>点按钮注册成功之后，在页面上方用户菜单上选择 “+”-&gt;New repository 创建一个新的仓库<br><img src="/asset/img/repository.png" class="[git]"></p>
+<a id="more"></a>
+<p>title: 注册账户以及创建仓库<br>要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。步骤如下：打开<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 直接在首页上注册<br><img src="/asset/img/git-index.png" class="[git]"><br>点按钮注册成功之后，在页面上方用户菜单上选择 “+”-&gt;New repository 创建一个新的仓库<br><img src="/asset/img/repository.png" class="[git]"><br>为仓库取一个名字，点击创建仓库按钮 你将成功创建一个仓库</p>
+<img src="/asset/img/git-new-rep.png" class="[git]">
+<hr>
+<p>title: 安装git客户端<br>github是服务端，要想在自己电脑上使用git我们还需要一个git客户端，</p>
+<p>windows用户请下载 <a href="http://msysgit.github.com/" target="_blank" rel="noopener">http://msysgit.github.com/</a></p>
+<p>mac用户请下载 <a href="http://code.google.com/p/tortoisegit/" target="_blank" rel="noopener">http://code.google.com/p/tortoisegit/</a></p>
+<p>一路next，安装成功后， 回到C盘，或任何文件夹下，点鼠标右键会多出一些菜单</p>
+<h2 id="如-Git-Init-Hear、Git-Bash、Git-Gui-，-说明安装成功。"><a href="#如-Git-Init-Hear、Git-Bash、Git-Gui-，-说明安装成功。" class="headerlink" title="如 Git Init Hear、Git Bash、Git Gui ， 说明安装成功。"></a>如 Git Init Hear、Git Bash、Git Gui ， 说明安装成功。</h2><p>title: 配置Git<br>我们先在电脑硬盘里找一块地方存放本地仓库，比如我们把本地仓库建立在C:\MyRepository\1ke_test文件夹下</p>
+<p>进入1ke_test文件夹 鼠标右键操作如下步骤：</p>
+<p>1）在本地仓库里右键选择Git Init Here，会多出来一个.git文件夹，这就表示本地git创建成功。右键Git Bash进入git命令行，截图效果如下：<br><img src="/asset/img/bash1.png" class="[git]"><br>第一次在本地仓库操作需要先执行git init命令<br><code>$ git init</code><br><img src="/asset/img/bash2.png" class="[git]"><br>为了把本地的仓库传到github，还需要配置ssh key。</p>
+<p>2）在本地创建ssh key<br><code>$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</code></p>
+<p>后面的<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>改为你的邮箱。我的邮箱是<a href="mailto:lilu@1ke.co" target="_blank" rel="noopener">lilu@1ke.co</a>，也是在github上注册的那个邮箱：<br><img src="/asset/img/bash3.png" class="[git]"><br>直接点回车，说明会在默认文件id_rsa上生成ssh key。<br>然后系统要求输入密码，直接按回车表示不设密码<br><img src="/asset/img/bash4.png" class="[git]"><br>重复密码时也是直接回车，之后提示你shh key已经生成成功。<br><img src="/asset/img/bash5.png" class="[git]"><br>然后我们进入提示的地址下查看ssh key文件。 我的电脑的地址是C:\Users\lilu.ssh ，其中lilu是我的电脑的名称<br><img src="/asset/img/ssh.png" class="[git]"><br>打开id_rsa.pub，复制里面的key。里面的key是一对看不懂的字符数字组合，不用管它，直接复制。</p>
+<p>回到github网站，进入Account Settings，左边选择SSH Keys，Add SSH Key,<br><img src="/asset/img/ssh2.png" class="[git]"></p>
+<p>title随便填，粘贴key。<br><img src="/asset/img/ssh3.png" class="[git]"></p>
+<p>3）验证是否成功，在git bash下输入<br><code>$ ssh -T git@github.com</code><br>回车就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。<br><img src="/asset/img/ssh4.png" class="[git]"><br>4）接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们<br><code>$ git config --global user.name &quot;your name&quot;
+$ git config --global user.email &quot;your_email@youremail.com&quot;</code></p>
+<p>分别输入上述命令行 回车， 我的界面显示如下<br><img src="/asset/img/ssh5.png" class="[git]"></p>
+<p>5）进入要上传的仓库，右键git bash，添加远程地址<br><code>$ git remote add origin git@github.com:yourName/yourRepo.git</code><br>后面的yourName和yourRepo表示你再github的用户名和刚才新建的仓库，加完之后进入.git，打开config，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。<br><img src="/asset/img/ssh6.png" class="[git]"><br>与github上的对应</p>
+<img src="/asset/img/ssh7.png" class="[git]">
+<hr>
+<p>title: 提交上传</p>
 
       
 
