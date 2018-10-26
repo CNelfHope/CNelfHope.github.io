@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://yoursite.com/asset/img/ssh7.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme2.png">
-<meta property="og:updated_time" content="2018-10-26T16:11:52.249Z">
+<meta property="og:updated_time" content="2018-10-26T16:16:48.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Git上传项目代码到github(转)">
 <meta name="twitter:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
@@ -195,14 +195,14 @@
       
         <p>github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。<br><img src="/asset/img/git.png" class="[git]"></p>
 <a id="more"></a>
-<h2 id="title-注册账户以及创建仓库"><a href="#title-注册账户以及创建仓库" class="headerlink" title="title: 注册账户以及创建仓库   "></a>title: 注册账户以及创建仓库   </h2><p>要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。步骤如下：打开<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 直接在首页上注册<br><img src="/asset/img/git-index.png" class="[git]"></p>
+<h2 id="注册账户以及创建仓库"><a href="#注册账户以及创建仓库" class="headerlink" title="注册账户以及创建仓库   "></a>注册账户以及创建仓库   </h2><p>要想使用github第一步当然是注册github账号了。之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。步骤如下：打开<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> 直接在首页上注册<br><img src="/asset/img/git-index.png" class="[git]"></p>
 <p>点按钮注册成功之后，在页面上方用户菜单上选择 “+”-&gt;New repository 创建一个新的仓库<br><img src="/asset/img/repository.png" class="[git]"></p>
 <p>为仓库取一个名字，点击创建仓库按钮 你将成功创建一个仓库<br><img src="/asset/img/git-new-rep.png" class="[git]"></p>
-<h2 id="title-安装git客户端"><a href="#title-安装git客户端" class="headerlink" title="title: 安装git客户端"></a>title: 安装git客户端</h2><p>github是服务端，要想在自己电脑上使用git我们还需要一个git客户端，</p>
+<h2 id="安装git客户端"><a href="#安装git客户端" class="headerlink" title="安装git客户端"></a>安装git客户端</h2><p>github是服务端，要想在自己电脑上使用git我们还需要一个git客户端，</p>
 <p>windows用户请下载 <a href="http://msysgit.github.com/" target="_blank" rel="noopener">http://msysgit.github.com/</a></p>
 <p>mac用户请下载 <a href="http://code.google.com/p/tortoisegit/" target="_blank" rel="noopener">http://code.google.com/p/tortoisegit/</a></p>
 <p>一路next，安装成功后， 回到C盘，或任何文件夹下，点鼠标右键会多出一些菜单<br>如 Git Init Hear、Git Bash、Git Gui ， 说明安装成功。</p>
-<h2 id="title-配置Git"><a href="#title-配置Git" class="headerlink" title="title: 配置Git"></a>title: 配置Git</h2><p>我们先在电脑硬盘里找一块地方存放本地仓库，比如我们把本地仓库建立在C:\MyRepository\1ke_test文件夹下</p>
+<h2 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h2><p>我们先在电脑硬盘里找一块地方存放本地仓库，比如我们把本地仓库建立在C:\MyRepository\1ke_test文件夹下</p>
 <p>进入1ke_test文件夹 鼠标右键操作如下步骤：</p>
 <p>1）在本地仓库里右键选择Git Init Here，会多出来一个.git文件夹，这就表示本地git创建成功。右键Git Bash进入git命令行，截图效果如下：<br><img src="/asset/img/bash1.png" class="[git]"><br>第一次在本地仓库操作需要先执行git init命令<br><code>$ git init</code><br><img src="/asset/img/bash2.png" class="[git]"><br>为了把本地的仓库传到github，还需要配置ssh key。</p>
 <p>2）在本地创建ssh key<br><code>$ ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot;</code></p>
@@ -220,7 +220,7 @@
 <p>5）进入要上传的仓库，右键git bash，添加远程地址<br><code>$ git remote add origin git@github.com:yourName/yourRepo.git</code></p>
 <p>后面的yourName和yourRepo表示你再github的用户名和刚才新建的仓库，加完之后进入.git，打开config，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。<br><img src="/asset/img/ssh6.png" class="[git]"></p>
 <p>与github上的对应<br><img src="/asset/img/ssh7.png" class="[git]"></p>
-<h2 id="title-提交上传"><a href="#title-提交上传" class="headerlink" title="title: 提交上传"></a>title: 提交上传</h2><p>1）接下来在本地仓库里添加一些文件，比如README</p>
+<h2 id="提交上传"><a href="#提交上传" class="headerlink" title="提交上传"></a>提交上传</h2><p>1）接下来在本地仓库里添加一些文件，比如README</p>
 <p>在本地新建一个README文件<br><img src="/asset/img/readme.png" class="[git]"></p>
 <p>然后在命令行输入一下命令<br><code>$ git add README</code><br><code>$ git commit -m &quot;first commit&quot;</code></p>
 <p>我的执行界面如下<br><img src="/asset/img/readme2.png" class="[git]"></p>
@@ -294,15 +294,8 @@
 <p><code>git remote show origin # 查看远程服务器仓库状态</code></p>
 <p><code>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</code></p>
 <p><code>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm &lt;repository&gt; # 删除远程仓库</code></p>
-<p>创建远程仓库<br><code>git clone --bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</code></p>
-<p><code>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</code></p>
-<p><code>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git --bare init # 在服务器创建纯仓库</code></p>
-<p><code>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</code></p>
-<p><code>git push -u origin master # 客户端首次提交</code></p>
-<p><code>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</code></p>
-<p><code>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</code></p>
-<p>也可以命令设置跟踪远程库和本地库<br><code>git branch --set-upstream master origin/master</code></p>
-<p><code>git branch --set-upstream develop origin/develop</code></p>
+<p>创建远程仓库<br><code>git clone --bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</code><br><code></code>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上<code></code><br><code>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git --bare init # 在服务器创建纯仓库</code><br><code></code>git remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址<code></code><br><code>git push -u origin master # 客户端首次提交</code><br><code></code>git push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track<code></code><br><code>git remote set-head origin master # 设置远程仓库的HEAD指向master分支</code></p>
+<p>也可以命令设置跟踪远程库和本地库<br><code>git branch --set-upstream master origin/master</code><br><code></code>git branch –set-upstream develop origin/develop`</p>
 
       
 
