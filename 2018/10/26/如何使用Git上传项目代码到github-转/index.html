@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://yoursite.com/asset/img/ssh7.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme.png">
 <meta property="og:image" content="http://yoursite.com/asset/img/readme2.png">
-<meta property="og:updated_time" content="2018-10-26T16:41:37.450Z">
+<meta property="og:updated_time" content="2018-10-26T16:45:11.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Git上传项目代码到github(转)">
 <meta name="twitter:description" content="github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。这对于一般人来说公共仓库就已经足够了。">
@@ -206,8 +206,10 @@
 <p>进入1ke_test文件夹 鼠标右键操作如下步骤：</p>
 <p>1）在本地仓库里右键选择Git Init Here，会多出来一个.git文件夹，这就表示本地git创建成功。右键Git Bash进入git命令行，截图效果如下：<br><img src="/asset/img/bash1.png" class="[git]"><br>第一次在本地仓库操作需要先执行git init命令</p>
 <blockquote>
-<p>$ git init<br><img src="/asset/img/bash2.png" class="[git]"><br>为了把本地的仓库传到github，还需要配置ssh key。</p>
+<p>$ git init</p>
 </blockquote>
+<img src="/asset/img/bash2.png" class="[git]">
+<p>为了把本地的仓库传到github，还需要配置ssh key。</p>
 <p>2）在本地创建ssh key</p>
 <blockquote>
 <p>$ ssh-keygen -t rsa -C “<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>“</p>
@@ -432,6 +434,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/11/21/Javascript重要的33个概念——调用堆栈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Javascript重要的33个概念——调用堆栈
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/10/26/第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">第一篇文章</div>
@@ -578,6 +589,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">javascript,堆,栈</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

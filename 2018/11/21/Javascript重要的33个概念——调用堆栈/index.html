@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>第一篇文章 | CNelfHope的个人小站</title>
+  <title>Javascript重要的33个概念——调用堆栈 | CNelfHope的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎来到我的博客，这是我写的第一篇博文。">
+  <meta name="description" content="调用栈&amp;emsp;&amp;emsp;调用栈是解析器（如浏览器中的javascript解析器）的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数正在执行，什么函数被这个函数调用，下一个调用的函数时谁）">
+<meta name="keywords" content="javascript,堆,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇文章">
-<meta property="og:url" content="http://yoursite.com/2018/10/26/第一篇博客/index.html">
+<meta property="og:title" content="Javascript重要的33个概念——调用堆栈">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/Javascript重要的33个概念——调用堆栈/index.html">
 <meta property="og:site_name" content="CNelfHope的个人小站">
-<meta property="og:description" content="欢迎来到我的博客，这是我写的第一篇博文。">
+<meta property="og:description" content="调用栈&amp;emsp;&amp;emsp;调用栈是解析器（如浏览器中的javascript解析器）的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数正在执行，什么函数被这个函数调用，下一个调用的函数时谁）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-26T16:26:54.205Z">
+<meta property="og:updated_time" content="2018-11-21T05:50:12.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一篇文章">
-<meta name="twitter:description" content="欢迎来到我的博客，这是我写的第一篇博文。">
+<meta name="twitter:title" content="Javascript重要的33个概念——调用堆栈">
+<meta name="twitter:description" content="调用栈&amp;emsp;&amp;emsp;调用栈是解析器（如浏览器中的javascript解析器）的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数正在执行，什么函数被这个函数调用，下一个调用的函数时谁）">
   
     <link rel="alternative" href="/atom.xml" title="CNelfHope的个人小站" type="application/atom+xml">
   
@@ -154,29 +155,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-第一篇博客" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Javascript重要的33个概念——调用堆栈" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      第一篇文章
+      Javascript重要的33个概念——调用堆栈
     </h1>
   
 
         
-        <a href="/2018/10/26/第一篇博客/" class="archive-article-date">
-  	<time datetime="2018-10-26T04:44:12.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-26</time>
+        <a href="/2018/11/21/Javascript重要的33个概念——调用堆栈/" class="archive-article-date">
+  	<time datetime="2018-11-21T05:32:19.757Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>欢迎来到我的博客，这是我写的第一篇博文。  </p>
+        <h3 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h3><p>&emsp;&emsp;调用栈是解析器（如浏览器中的javascript解析器）的一种机制，可以在脚本调用多个函数时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数正在执行，什么函数被这个函数调用，下一个调用的函数时谁）</p>
 <a id="more"></a>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit voluptatem dicta delectus voluptatibus tempore, enim odio, culpa fugiat! Magnam iusto nemo eaque dolores omnis ratione quam quisquam id at aliquid.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit voluptatem dicta delectus voluptatibus tempore, enim odio, culpa fugiat! Magnam iusto nemo eaque dolores omnis ratione quam quisquam id at aliquid.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit voluptatem dicta delectus voluptatibus tempore, enim odio, culpa fugiat! Magnam iusto nemo eaque dolores omnis ratione quam quisquam id at aliquid.<br>欢迎访问我的<a href="https://github.com/CNelfHope" target="_blank" rel="noopener">github</a>!</p>
+<ul>
+<li>当脚本要调用一个函数时，解析器把该函数添加到栈中并且执行这个函数。</li>
+<li>任何被这个函数调用的函数会进一步添加到调用栈中，并且运行到它们被上个程序调用的位置。</li>
+<li>当函数运行结束后，解释器将它从堆栈中取出，并在主代码列表中继续执行代码。</li>
+<li>如果栈占用的空间比分配给它的空间还大，那么则会导致“栈溢出”错误。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">// [1] Some codes here</span></span><br><span class="line">   sayHi();</span><br><span class="line">   <span class="comment">// [2] Some codes here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">"Hi!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用 `greeting` 方法</span></span><br><span class="line">greeting();</span><br><span class="line"></span><br><span class="line"><span class="comment">// [3] Some codes here</span></span><br><span class="line">上面的代码将这样执行:</span><br></pre></td></tr></table></figure>
+<p>上面的代码将这样执行:</p>
+<ol>
+<li>忽略所有的方法, 直到到达 greeting() 方法。</li>
+<li>调用 greeting() 方法。</li>
+<li>把 <code>greeting</code> 方法加入调用栈列表。</li>
+</ol>
+<blockquote>
+<p>调用栈列表:<br>- greeting</p>
+</blockquote>
+<ol start="4">
+<li>执行 <code>greeting</code> 方法中的所有代码行。</li>
+<li>到达 sayHi() 方法。</li>
+<li>把 sayHi() 方法加入调用栈列表。</li>
+</ol>
+<blockquote>
+<p>调用栈列表:<br>- greeting<br>- sayHi</p>
+</blockquote>
+<ol start="7">
+<li>执行 sayHi() 函数中的所有代码行，直到结束。</li>
+<li>将执行返回到调用 sayHi() 的行，并继续执行 greeting() 函数的其余部分。</li>
+<li>把 sayHi() 方法从调用栈列表中删除。</li>
+</ol>
+<blockquote>
+<p>调用栈列表:<br>- greeting</p>
+</blockquote>
+<ol start="10">
+<li>当 greeting() 函数中的所有内容都执行完之后，返回到它的调用行继续执行其余的JS代码。</li>
+<li>把 greeting() 方法从调用栈列表中删除。</li>
+</ol>
+<blockquote>
+<p>调用栈列表:<br>空</p>
+</blockquote>
+<p>我们从一个空的调用栈开始，当我们调用一个函数时，它会自动添加到调用栈中，在执行完所有代码之后，它会自动从调用栈中删除。最后，我们也得到了一个空栈。</p>
+<p>文章引用——<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Call_stack" target="_blank" rel="noopener">调用栈 - 术语表 | MDN</a></p>
 
       
 
@@ -185,6 +226,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">javascript,堆,栈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -235,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/26/第一篇博客/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/21/Javascript重要的33个概念——调用堆栈/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -249,15 +301,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/10/26/如何使用Git上传项目代码到github-转/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          如何使用Git上传项目代码到github(转)
-        
-      </div>
-    </a>
   
+    <a href="/2018/10/26/如何使用Git上传项目代码到github-转/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何使用Git上传项目代码到github(转)</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -283,7 +331,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="第一篇博客" data-title="第一篇文章" data-url="http://yoursite.com/2018/10/26/第一篇博客/"></div>
+	<div class="ds-thread" data-thread-key="Javascript重要的33个概念——调用堆栈" data-title="Javascript重要的33个概念——调用堆栈" data-url="http://yoursite.com/2018/11/21/Javascript重要的33个概念——调用堆栈/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
