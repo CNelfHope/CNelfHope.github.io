@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: javascript,异步,event loop | CNelfHope的个人小站</title>
+  <title>揭秘 0.1 + 0.2 != 0.3 | CNelfHope的个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CNelfHope的个人小站">
-<meta property="og:url" content="http://yoursite.com/tags/javascript-异步-event-loop/index.html">
+  <meta name="description" content="“0.1 + 0.2 = ?”，这道题如果给小学生，他会立马告诉你答案是 0.3，但是交给一些程序去计算，结果就不是那么简单了。  事实上，不仅仅是 JS，在其他采用 IEEE754 浮点数标准的语言中，0.1 + 0.2 都不会等于 0.3，但是 0.2 + 0.3 却等于 0.5，这是为何？想必这类问题也困扰着不少程序员。">
+<meta name="keywords" content="javascript,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="揭秘 0.1 + 0.2 != 0.3">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/揭秘 0.1 + 0.2 != 0.3/index.html">
 <meta property="og:site_name" content="CNelfHope的个人小站">
+<meta property="og:description" content="“0.1 + 0.2 = ?”，这道题如果给小学生，他会立马告诉你答案是 0.3，但是交给一些程序去计算，结果就不是那么简单了。  事实上，不仅仅是 JS，在其他采用 IEEE754 浮点数标准的语言中，0.1 + 0.2 都不会等于 0.3，但是 0.2 + 0.3 却等于 0.5，这是为何？想必这类问题也困扰着不少程序员。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/blogimgs/2016/09/28/6c0378f8gw1f89pd8hm96j20p00dwacm.jpg">
+<meta property="og:updated_time" content="2018-11-26T14:46:57.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CNelfHope的个人小站">
+<meta name="twitter:title" content="揭秘 0.1 + 0.2 != 0.3">
+<meta name="twitter:description" content="“0.1 + 0.2 = ?”，这道题如果给小学生，他会立马告诉你答案是 0.3，但是交给一些程序去计算，结果就不是那么简单了。  事实上，不仅仅是 JS，在其他采用 IEEE754 浮点数标准的语言中，0.1 + 0.2 都不会等于 0.3，但是 0.2 + 0.3 却等于 0.5，这是为何？想必这类问题也困扰着不少程序员。">
+<meta name="twitter:image" content="http://yoursite.com/blogimgs/2016/09/28/6c0378f8gw1f89pd8hm96j20p00dwacm.jpg">
   
     <link rel="alternative" href="/atom.xml" title="CNelfHope的个人小站" type="application/atom+xml">
   
@@ -150,60 +157,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-揭秘 0.1 + 0.2 != 0.3" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/22/javascript执行机制/" class="archive-article-date">
-  	<time datetime="2018-11-22T15:21:26.156Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/22/javascript执行机制/">javascript执行机制</a>
+    <h1 class="article-title" itemprop="name">
+      揭秘 0.1 + 0.2 != 0.3
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/11/26/揭秘 0.1 + 0.2 != 0.3/" class="archive-article-date">
+  	<time datetime="2018-11-26T14:32:58.388Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“0.1 + 0.2 = ?”，这道题如果给小学生，他会立马告诉你答案是 0.3，但是交给一些程序去计算，结果就不是那么简单了。</p>
+<p><img src="/blogimgs/2016/09/28/6c0378f8gw1f89pd8hm96j20p00dwacm.jpg" alt=""></p>
+<p>事实上，不仅仅是 JS，在其他采用 IEEE754 浮点数标准的语言中，0.1 + 0.2 都不会等于 0.3，但是 0.2 + 0.3 却等于 0.5，这是为何？想必这类问题也困扰着不少程序员。</p>
+<a id="more"></a>
+<h3 id="IEEE754-浮点数的演算"><a href="#IEEE754-浮点数的演算" class="headerlink" title="IEEE754 浮点数的演算"></a>IEEE754 浮点数的演算</h3><p>我们知道，科学计数法中 30000 可以写成 3x104，以 10 为底数 4 为指数的科学计数法。在 IEEE754 标准中是比较类似的，只不过它是二进制数，底数也为 2。</p>
+<p>IEEE 754 中最常用的浮点数值表示法是：单精确度（32位）和双精确度（64位），JavaScript 采用的是后者。举个例子，十进制数 150，使用双精度浮点数表示法，表示如下：</p>
+<blockquote>
+<p>// D 表示十进制，B 表示二进制<br>150D = 2^8 * 0.1001011B // 后面省略了 46 个 0</p>
+</blockquote>
+<p>可以通过短除法计算：</p>
+<blockquote>
+<p>  150  余数位<br>÷  2<br>———————————————<br>  75    0<br>÷  2<br>———————————————<br>  37    1<br>÷  2<br>———————————————<br>  18    1<br>÷  2<br>———————————————<br>  9     0<br>÷  2<br>———————————————<br>  4     1<br>÷  2<br>———————————————<br>  2     0<br>÷  2<br>———————————————<br>  1     0<br>÷  2<br>———————————————<br>  0     1</p>
+</blockquote>
+<p>最后一个余数为高位值，于是拿到 150 对应的二进制数位 1001011，也就等于 2^8 * 0.1001011。</p>
+<p>上面是整数的表示法，而小数的表示法采用的是乘二取整，如 0.1，它的二进制表示为：</p>
+<blockquote>
+<p>// (0011) 表示循环<br>0.1D = 2^-3 * 0.110011(0011)</p>
+</blockquote>
+<p>其演算方法如下：</p>
+<blockquote>
+<p>0.1   整数位<br>×  2<br>———————————————<br>0.2     0<br>×  2<br>———————————————<br>0.4     0   <em> ↓<br>×  2<br>———————————————<br>0.8     0<br>×  2<br>———————————————<br>1.6     1<br>×  2<br>———————————————<br>1.2     1<br>×  2<br>———————————————<br>0.4     0   </em> ↑<br>   (0011循环)</p>
+</blockquote>
+<p>与整数不同的是，第一个计算得到的整数位为最高位，故 0.1 对应的二进制数为 0.000110011(0011)，也就等于 2^-3 0.1100110011(0011)。</p>
+<p>如果一个数既包含整数部分，又包含小数部分，其表示法的计算，需要分拆为整数和小数两部分，然后相加得到结果。</p>
+<h3 id="IEEE754-浮点数精度丢失"><a href="#IEEE754-浮点数精度丢失" class="headerlink" title="IEEE754 浮点数精度丢失"></a>IEEE754 浮点数精度丢失</h3><p>IEEE754 浮点数表示法的数据格式如下图：</p>
+<blockquote>
+<p>// 下图采用大端表示，高位在左，低位在右。<br>sign  exponent         fraction<br>+—+———-+———————+<br>| 1 |   2~12   |         13~64       |<br>+—+———-+———————+</p>
+</blockquote>
+<ul>
+<li>符号位：高位第 1 位，如图 sign 部分</li>
+<li>指数位：高位第 2~12 位，如图 exponent 部分</li>
+<li>尾数位：剩下的 fraction 部分<br>从上面小数的乘二取整演算中可以看到，有些小数对应的二进制数是无法写全的，比如 0.1，而 fraction 尾数部分有要求，只允许 52 位，超过部分进一舍零。</li>
+</ul>
+<p>那么，我们就可以得到：</p>
+<blockquote>
+<p>0.1D<br>= 2^-4 <em> 1.10011(0011)B<br>= 2^-4 </em> 1.10011(0011 repeat 12 times)0011B // ← 最后一位为 1，进 1<br>= 2^-4 * 1.10011(0011 repeat 12 times)010B</p>
+</blockquote>
+<h3 id="揭秘-0-1-0-2"><a href="#揭秘-0-1-0-2" class="headerlink" title="揭秘 0.1 + 0.2"></a>揭秘 0.1 + 0.2</h3><p>根据上面我们了解到的知识，我们可以很容易算出这些值：</p>
+<blockquote>
+<p>0.1D = 2^-4 <em> 1.1001100110011001100110011001100110011001100110011010B<br>0.2D = 2^-3 </em> 1.1001100110011001100110011001100110011001100110011010B<br>0.3D = 2^-2 * 1.0011001100110011001100110011001100110011001100110011B</p>
+</blockquote>
+<p>0.1 + 0.2 时，先将两者指数统一为 -3，故 0.1 小数点向左移一位，于是：</p>
+<blockquote>
+<p>   0.1100110011001100110011001100110011001100110011001101B</p>
+<ul>
+<li>1.1001100110011001100110011001100110011001100110011010B</li>
+</ul>
+<hr>
+<p>= 10.0110011001100110011001100110011001100110011001100111B</p>
+</blockquote>
+<p>得到的二进制数为：</p>
+<blockquote>
+<p>10.0110011001100110011001100110011001100110011001100111B</p>
+</blockquote>
+<p>小数点往左移一位使得整数部分为 1，此时尾数部分为 53 位，进一舍零，于是得到最后的值是：</p>
+<blockquote>
+<p>2^-2 * 1.0011001100110011001100110011001100110011001100110100</p>
+</blockquote>
+<p>这个值转化成真值，结果为：0.30000000000000004。那么 0.1 + 0.2 = 0.30000000000000004 的推演到这里就结束了。</p>
+<h3 id="相关验证"><a href="#相关验证" class="headerlink" title="相关验证"></a>相关验证</h3><p>毕竟咱们手动计算可能存在笔误，可以通过一个叫做 double-bits 的 npm 进行推演，我写了一个小 demo，感兴趣的可以玩耍下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">'double-bits'</span>);</span><br><span class="line"><span class="keyword">const</span> pad = <span class="built_in">require</span>(<span class="string">'pad'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [lo, hi] where lo is a 32 bit integer and hi is a 20 bit integer.</span></span><br><span class="line"><span class="keyword">const</span> base2Str = <span class="function">(<span class="params">n</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> f = db.fraction(n);</span><br><span class="line">  <span class="keyword">const</span> s = db.sign(n) ? <span class="string">'-'</span> : <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">const</span> e = <span class="string">`2^<span class="subst">$&#123;db.exponent(n) + <span class="number">1</span>&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">const</span> t = <span class="string">`0.<span class="subst">$&#123;pad(f[<span class="number">1</span>].toString(<span class="number">2</span>), <span class="number">20</span>, <span class="string">'0'</span>)&#125;</span><span class="subst">$&#123;pad(f[<span class="number">0</span>].toString(<span class="number">2</span>), <span class="number">32</span>, <span class="string">'0'</span>)&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;s&#125;</span><span class="subst">$&#123;e&#125;</span> * <span class="subst">$&#123;t&#125;</span>`</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(base2Str(<span class="number">0.1</span>).toString(<span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(base2Str(<span class="number">0.2</span>).toString(<span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(base2Str(<span class="number">0.3</span>).toString(<span class="number">2</span>));</span><br><span class="line"><span class="built_in">console</span>.log(base2Str(<span class="number">1.2</span>).toString(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<p>上面输出结果为：</p>
+<blockquote>
+<p>2^-3 <em> 0.11001100110011001100110011001100110011001100110011010<br>2^-2 </em> 0.11001100110011001100110011001100110011001100110011010<br>2^-1 <em> 0.10011001100110011001111001100110011001100110011001100<br>2^1 </em> 0.10011001100110011001111001100110011001100110011001100</p>
+</blockquote>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>为了按照计算机的思维，IEEE754 的标准来计算 0.1 + 0.2，又重新复习了一遍大学计算机基础的知识，原码、反码、补码，以及除二取余、乘二取整计算法，最后能够推演出来，也算是一个胜利吧~</p>
+<p>转自：<a href="https://www.barretlee.com/blog/2016/09/28/ieee754-operation-in-js/" target="_blank" rel="noopener">揭秘 0.1 + 0.2 != 0.3 | 小胡子哥</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">javascript,异步,event loop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">javascript,面试</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/26/揭秘 0.1 + 0.2 != 0.3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/11/22/javascript执行机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript执行机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="揭秘 0.1 + 0.2 != 0.3" data-title="揭秘 0.1 + 0.2 != 0.3" data-url="http://yoursite.com/2018/11/26/揭秘 0.1 + 0.2 != 0.3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +405,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
